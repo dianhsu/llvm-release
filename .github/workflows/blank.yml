@@ -24,18 +24,18 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+        with:
+          repository: llvm/llvm-project
 
       - name: Install Requirements
         run: |
           sudo apt-get update
           sudo apt-get -y install cmake ninja-build
           
-      - name: Clone LLVM Project
-        run: git clone https://github.com/llvm/llvm-project.git
       - name: Build LLVM Project
         run: |
-          mkdir llvm-project/build
-          cd llvm-project/build
+          mkdir build
+          cd build
           cmake ../llvm/ -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra"
           cmake --build ../build --target clangd
           ls
