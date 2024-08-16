@@ -31,9 +31,7 @@ jobs:
           sudo apt-get -y install cmake ninja-build
           
       - name: Clone LLVM Project
-        run: |
-          git clone https://github.com/llvm/llvm-project.git
-          mkdir llvm-project/build
+        run: git clone https://github.com/llvm/llvm-project.git
       - name: Build LLVM Project
         run: |
           mkdir llvm-project/build
